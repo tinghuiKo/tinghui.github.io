@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packaging Design | TingHui's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a9d8f;
+            --secondary: #e9c46a;
+            --accent: #e76f51;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .project-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #3bb3a4 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        
+        }
+        
+        .packaging-showcase {
+            background: white;
+            padding: 4rem 2rem;
+            text-align: left;
+        }
+        
+        .dieline-container {
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 16px;
+            margin: 2rem auto;
+            
+            max-width: 900px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .material-specs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .spec-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: 200px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .spec-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .mockup-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .mockup-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .project-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .project-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .project-hero p.subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .meta-item i {
+            color: var(--secondary);
+        }
+        
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .project-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+        }
+        
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 0.5fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .project-description p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+        
+        .back-button:hover {
+            background: var(--secondary);
+            transform: translateX(-5px);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-item {
+            background: rgba(42, 42, 114, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .project-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .project-hero p.subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+/* Footer */
+footer {
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    margin-top: 5rem;
+}
+
+footer p {
+    opacity: 0.8;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">TINGHUI</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <span class="category-badge">Packaging Design</span>
+            <h1>Sabah Tea Packaging</h1>
+            <p class="subtitle">Sustainable packaging design for premium tea products</p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Completed: January 2023</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-leaf"></i>
+                    <span>Sustainable Materials</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="project-container">
+        <section class="project-section">
+            <h2 class="section-title">Project Overview</h2>
+            <div class="project-description">
+                <p>Sabah Tea needed a complete packaging redesign that would maintain their brand identity while improving shelf appeal and transitioning to more sustainable materials. The project included creating dielines for multiple product sizes and designing packaging that would communicate the premium quality of their teas.</p>
+            </div>
+        </section>
+
+        <section class="packaging-showcase">
+            <h2 class="section-title">Dieline Design</h2>
+            <div class="dieline-container">
+                <img src="IMG/Screenshot 2024-09-24 215458.png" alt="Sabah Tea Dieline" style="width:100%">
+            </div>
+            
+            <h2 class="section-title">Kao White Dieline</h2>
+            <div class="dieline-container">
+                <img src="IMG/Screenshot 2025-04-04 170315.png" alt="Kao White Dieline" style="width:100%">
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2 class="section-title">Material Specifications</h2>
+            <div class="material-specs">
+                <div class="spec-card">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Recycled Paper</h3>
+                    <p>85% post-consumer waste</p>
+                </div>
+                <div class="spec-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Soy Ink</h3>
+                    <p>Eco-friendly printing</p>
+                </div>
+                <div class="spec-card">
+                    <i class="fas fa-weight"></i>
+                    <h3>210 GSM</h3>
+                    <p>Premium weight</p>
+                </div>
+                <div class="spec-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>FSC Certified</h3>
+                    <p>Sustainable sourcing</p>
+                </div>
+            </div>
+        </section>
+
+
+        <a href="projects.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            Back to Projects
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 TingHui's Portfolio. All rights reserved.</p>
+    </footer>
+</body>
+</body>
+</html>
