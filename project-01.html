@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Project | TingHui's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Project Detail Page Specific Styles */
+        :root {
+            --primary: #2a2a72;
+            --secondary: #ff9f1c;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.7;
+        }
+        
+        .project-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #4a4a8a 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .project-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .project-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .project-hero p.subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .meta-item i {
+            color: var(--secondary);
+        }
+        
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .project-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+        }
+        
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .project-description p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+        
+        .back-button:hover {
+            background: var(--secondary);
+            transform: translateX(-5px);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-item {
+            background: rgba(42, 42, 114, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .project-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .project-hero p.subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+/* Footer */
+footer {
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    margin-top: 5rem;
+}
+
+footer p {
+    opacity: 0.8;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">TINGHUI</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <span class="category-badge">Web Development</span>
+            <h1>Social Media Platform</h1>
+            <p class="subtitle">A full-stack web application with user authentication and CRUD functionalities</p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Completed: June 2023</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-users"></i>
+                    <span>Team Project</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-tags"></i>
+                    <span>Full Stack Development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <div class="project-container">
+        <!-- Project Overview -->
+        <section class="project-section">
+            <h2 class="section-title">Project Overview</h2>
+            <div class="project-description">
+                <p>A comprehensive full stack web development project in which the team collaborates on user authentication and several CRUD functionalities to facilitate this social media platform. The application was built using modern web technologies with a focus on performance and user experience.</p>
+                <p>The project also includes a simple development of Eclipse PHP web application that demonstrates the versatility of our team in working with different technology stacks.</p>
+            </div>
+            
+            <div class="tech-stack">
+                <span class="tech-item">HTML</span>
+                <span class="tech-item">CSS</span>
+                <span class="tech-item">JavaScript</span>
+                <span class="tech-item">PHP</span>
+                <span class="tech-item">MySQL</span>
+            </div>
+        </section>
+
+        <!-- Project Gallery -->
+        <section class="project-section">
+            <h2 class="section-title">Project Gallery</h2>
+            <div class="project-gallery">
+                <div class="gallery-item">
+                    <img src="IMG/log in.png" alt="Web Dashboard">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG/Profile.png" alt="User Profile Page">
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section class="project-section">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>User Authentication</h3>
+                    <p>Secure login system with email verification and password recovery functionality.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>CRUD Operations</h3>
+                    <p>Full Create, Read, Update, and Delete functionality for user-generated content.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Real-time Updates</h3>
+                    <p>Live notifications and activity feeds using WebSocket technology.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Responsive Design</h3>
+                    <p>Fully responsive layout that works on all device sizes.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Admin Dashboard</h3>
+                    <p>Comprehensive admin interface for content and user management.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>API Integration</h3>
+                    <p>Integration with third-party services for enhanced functionality.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Challenges -->
+        <section class="project-section">
+            <h2 class="section-title">Challenges & Solutions</h2>
+            <div class="project-description">
+                <p><strong>Challenge:</strong> Implementing real-time features across different devices while maintaining performance.</p>
+                <p><strong>Solution:</strong> We utilized WebSocket technology combined with a carefully designed caching system to ensure smooth real-time updates without overloading the server.</p>
+                
+                <p><strong>Challenge:</strong> Creating a seamless user experience across desktop and mobile platforms.</p>
+                <p><strong>Solution:</strong> Adopted a mobile-first design approach with progressive enhancement for larger screens, ensuring optimal performance on all devices.</p>
+            </div>
+        </section>
+
+        <!-- Back Button -->
+        <a href="projects.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            Back to Projects
+        </a>
+    </div>
+
+    
+</body>
+<!-- Footer -->
+    <footer>
+        <p>&copy; 2023 TingHui's Portfolio. All rights reserved.</p>
+    </footer>
+</html>
