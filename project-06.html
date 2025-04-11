@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FYP Project | TingHui's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a936f;
+            --secondary: #114b5f;
+            --accent: #88d498;
+        }
+        
+        .project-hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a936f 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .project-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .project-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .project-hero p.subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .meta-item i {
+            color: var(--secondary);
+        }
+        
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .project-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+        }
+        
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .project-description p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+        
+        .back-button:hover {
+            background: var(--secondary);
+            transform: translateX(-5px);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-item {
+            background: rgba(42, 42, 114, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .project-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .project-hero p.subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+/* Footer */
+footer {
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    margin-top: 5rem;
+}
+
+footer p {
+    opacity: 0.8;
+}
+        
+        .platform-screens {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .screen-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .screen-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .screen-caption {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .user-flow {
+            background: #f8f9fa;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+        }
+        
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            position: relative;
+            padding-left: 80px;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .step-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex-grow: 1;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .testimonial {
+            font-style: italic;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            margin: 2rem 0;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            margin-top: 1rem;
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">TINGHUI</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <span class="category-badge">Final Year Project</span>
+            <h1>Construction Bidding Platform</h1>
+            <p class="subtitle">A digital marketplace connecting homeowners with contractors</p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Completed: March 2025</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Academic Project</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="project-container">
+        <section class="project-section">
+            <h2 class="section-title">Project Vision</h2>
+            <div class="project-description">
+                <p>The Construction Bidding Platform was developed as my Final Year Project to address inefficiencies in the home renovation industry. The platform enhances transparency, efficiency, and collaboration by enabling project posting, real-time bidding, and customizable renovation packages.</p>
+                <p>Homeowners can get competitive bids from pre-vetted contractors, while contractors can find quality projects that match their expertise.</p>
+            </div>
+            
+            <div class="testimonial">
+                <p>"This platform has revolutionized how we find renovation projects. The bidding process is transparent and we've been able to grow our business by 40% since joining."</p>
+                <p class="testimonial-author">- Contractor User</p>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2 class="section-title">Platform Screens</h2>
+            <div class="platform-screens">
+                <div class="screen-card">
+                    <img src="IMG/Screenshot 2025-04-04 165453.png" alt="Platform Homepage">
+                    <div class="screen-caption">
+                        <h3>Homepage</h3>
+                        <p>Clean, intuitive interface showcasing featured projects</p>
+                    </div>
+                </div>
+                <div class="screen-card">
+                    <img src="IMG/WhatsApp Image 2025-04-10 at 12.01.23 AM (1).jpeg" alt="Project Details">
+                    <div class="screen-caption">
+                        <h3>Project Details</h3>
+                        <p>Comprehensive project information for bidders</p>
+                    </div>
+                </div>
+                <div class="screen-card">
+                    <img src="IMG/WhatsApp Image 2025-04-10 at 12.01.23 AM.jpeg" alt="Contractor Dashboard">
+                    <div class="screen-caption">
+                        <h3>Contractor Dashboard</h3>
+                        <p>Manage bids, projects, and communications</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2 class="section-title">How It Works</h2>
+            <div class="user-flow">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Create an Account</h3>
+                        <p>Register as a homeowner or contractor with different access levels</p>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Post a Project</h3>
+                        <p>Homeowners describe their renovation needs and budget</p>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Receive Bids</h3>
+                        <p>Contractors submit competitive bids with timelines</p>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Select Contractor</h3>
+                        <p>Homeowners compare bids and choose the best match</p>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Manage Project</h3>
+                        <p>Track progress and communicate through the platform</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2 class="section-title">Technical Implementation</h2>
+            <div class="project-description">
+                <p>The platform was built using a modern tech stack with CSS for the frontend, JavaScript.js, PHP for the backend, and MySQL for the database. Key features include real-time bidding updates, secure payment processing, and a robust review system.</p>
+            </div>
+            
+            <div class="tech-stack">
+                <span class="tech-item">JavaScript.js</span>
+                <span class="tech-item">MySQL</span>
+                <span class="tech-item">Socket.io</span>
+                <span class="tech-item">PHP</span>
+                <span class="tech-item">CSS</span>
+            </div>
+            
+
+        <a href="projects.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            Back to Projects
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 TingHui's Portfolio. All rights reserved.</p>
+    </footer>
+</body>
+</html>
