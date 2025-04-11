@@ -3,40 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-        }
-        header {
-            background: #333;
-            color: white;
-            padding: 20px;
-        }
-        .section {
-            padding: 20px;
-            margin: 20px 0;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>TingHui's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MH742PZ25V"></script>
 <script>
@@ -49,19 +18,210 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to My Personal Website</h1>
+        <nav>
+            <div class="logo">TINGHUI</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
     </header>
-    <div class="container">
-        <div class="section">
-            <h2>About Me</h2>
-            <p>Hi! I'm [Your Name]. Welcome to my personal space on the web!</p>
-        </div>
-        <div class="section">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-            <p>Social: <a href="#">@yourhandle</a></p>
+
+    <main>
+        <section class="hero">
+            <h1>I'M TING HUI</h1>
+            <p>An energetic and self-motivated undergraduate with strong passion, eager to embark on a career that allows me to leverage my education and skills to make a meaningful impact.</p>
+            <a href="projects.html" class="cta-button">View My Work</a>
+        </section>
+
+        <section class="featured-projects">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>WEB DEVELOPMENT</h3>
+                    <p>A comprehensive full stack web development project with user authentication and CRUD functionalities.</p>
+                    <a href="projects.html#web-dev">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>FYP PROJECT</h3>
+                    <p>Construction Project Bidding Site that enhances transparency and efficiency in renovation projects.</p>
+                    <a href="projects.html#fyp">View Project</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Add this right before the closing </body> tag -->
+<div class="modal" id="projectModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-body">
+            <!-- Content will be inserted here by JavaScript -->
         </div>
     </div>
+</div>
+
+<script src="scripts.js">
+    // Project data - you would replace this with your actual project data
+const projects = {
+    "web-dev": {
+        title: "Web Development Project",
+        subtitle: "Full Stack Social Media Platform",
+        images: [
+            "https://via.placeholder.com/800x500/3e92cc/ffffff?text=Web+App+Screenshot+1",
+            "https://via.placeholder.com/800x500/1e96fc/ffffff?text=Web+App+Screenshot+2"
+        ],
+        description: "A comprehensive full stack web development project in which the team collaborates on user authentication and several CRUD functionalities to facilitate this social media platform. The project includes both frontend and backend development with a modern tech stack.",
+        features: [
+            "User authentication system",
+            "CRUD functionalities",
+            "Responsive design",
+            "Database integration",
+            "Team collaboration features"
+        ]
+    },
+    "fyp": {
+        title: "FYP Project",
+        subtitle: "Construction Project Bidding Site",
+        images: [
+            "https://via.placeholder.com/800x500/0a2463/ffffff?text=Bidding+Platform+1",
+            "https://via.placeholder.com/800x500/3e92cc/ffffff?text=Bidding+Platform+2",
+            "https://via.placeholder.com/800x500/1e96fc/ffffff?text=Bidding+Platform+3"
+        ],
+        description: "A platform that enhances transparency, efficiency, and collaboration in the construction industry by enabling project posting, real-time bidding, and customizable renovation packages. This was developed as my Final Year Project.",
+        features: [
+            "Account creation for Customers and Contractors",
+            "Real-time bidding system",
+            "Project management dashboard",
+            "Customizable renovation packages",
+            "Transparent pricing structure"
+        ]
+    },
+    "logo": {
+        title: "Logo Creation",
+        subtitle: "MOGU Brand Identity",
+        images: [
+            "https://via.placeholder.com/800x500/d6f1ff/0a2463?text=MOGU+Logo"
+        ],
+        description: "Created a modern and memorable logo for the MOGU brand, focusing on clean lines and strong visual identity that represents the company's values and mission.",
+        features: [
+            "Vector-based design",
+            "Multiple color variations",
+            "Brand guidelines",
+            "Scalable for all media"
+        ]
+    },
+    "packaging": {
+        title: "Packaging Design",
+        subtitle: "Sabah Tea Dieline",
+        images: [
+            "https://via.placeholder.com/800x500/e9ecef/0a2463?text=Packaging+Design+1",
+            "https://via.placeholder.com/800x500/f8f9fa/0a2463?text=Packaging+Design+2"
+        ],
+        description: "Designed packaging dieline and artwork for Sabah Tea products, creating visually appealing and functional packaging that stands out on shelves while maintaining brand consistency.",
+        features: [
+            "3D mockups",
+            "Print-ready files",
+            "Multiple size variations",
+            "Compliance with industry standards"
+        ]
+    },
+    "poster": {
+        title: "Poster Design",
+        subtitle: "Event Promotion",
+        images: [
+            "https://via.placeholder.com/800x500/ffffff/0a2463?text=Event+Poster"
+        ],
+        description: "Designed an eye-catching event poster that effectively communicates key information while maintaining strong visual appeal and brand consistency.",
+        features: [
+            "High-resolution print file",
+            "Multiple layout options",
+            "Attention-grabbing typography",
+            "Clear information hierarchy"
+        ]
+    },
+    "system": {
+        title: "System Design",
+        subtitle: "Arduino Data Collection System",
+        images: [
+            "https://via.placeholder.com/800x500/001845/ffffff?text=System+Diagram",
+            "https://via.placeholder.com/800x500/2b2d42/ffffff?text=Data+Dashboard"
+        ],
+        description: "A collaborative project in which participants receive data from the Arduino UNO board, store it in a database, and update it in real-time. The system includes both hardware and software components working seamlessly together.",
+        features: [
+            "Real-time data collection",
+            "Database integration",
+            "Data visualization dashboard",
+            "Hardware-software interface",
+            "Team collaboration"
+        ]
+    }
+};
+
+// Modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('projectModal');
+    const modalBody = document.querySelector('.modal-body');
+    const closeModal = document.querySelector('.close-modal');
+    
+    // Add click event to all project cards
+    document.querySelectorAll('.project-card, .project').forEach(card => {
+        card.addEventListener('click', function() {
+            const projectId = this.id || this.closest('.project').id;
+            openModal(projectId);
+        });
+    });
+    
+    // Close modal when clicking X
+    closeModal.addEventListener('click', function() {
+        closeModalFunc();
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModalFunc();
+        }
+    });
+    
+    function openModal(projectId) {
+        const project = projects[projectId];
+        
+        if (!project) return;
+        
+        modalBody.innerHTML = `
+            <div class="modal-header">
+                <h2>${project.title}</h2>
+                <p>${project.subtitle}</p>
+            </div>
+            <div class="modal-images">
+                ${project.images.map(img => `<img src="${img}" alt="${project.title}">`).join('')}
+            </div>
+            <div class="modal-description">
+                <p>${project.description}</p>
+            </div>
+            <div class="modal-features">
+                <h3>Key Features</h3>
+                <ul>
+                    ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+        
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModalFunc() {
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto';
+    }
+});
+</script>
+
+    <footer>
+        <p>&copy; 2023 TingHui's Portfolio. All rights reserved.</p>
+    </footer>
 </body>
 </html>
 
