@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Design | TingHui's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3a86ff;
+            --secondary: #8338ec;
+            --accent: #ff006e;
+        }
+        
+        .project-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #4d92ff 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .project-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .project-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .project-hero p.subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .meta-item i {
+            color: var(--secondary);
+        }
+        
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .project-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+        }
+        
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .project-description p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+        
+        .back-button:hover {
+            background: var(--secondary);
+            transform: translateX(-5px);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-item {
+            background: rgba(42, 42, 114, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .project-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .project-hero p.subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+/* Footer */
+footer {
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    margin-top: 5rem;
+}
+
+footer p {
+    opacity: 0.8;
+}
+        
+        .system-diagram {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            margin: 3rem auto;
+            max-width: 900px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .component-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .component-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .data-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+        
+        .flow-step {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-weight: bold;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            color: var(--gray);
+            font-size: 1.5rem;
+        }
+        
+        .flow-step:last-child::after {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .flow-step {
+                width: 80px;
+                height: 80px;
+                font-size: 0.9rem;
+            }
+            
+            .flow-step::after {
+                right: -15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">TINGHUI</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <span class="category-badge">IoT System</span>
+            <h1>Arduino Data Collection System</h1>
+            <p class="subtitle">Real-time environmental monitoring with Arduino UNO</p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Completed: August 2022</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-microchip"></i>
+                    <span>Hardware/Software Integration</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="project-container">
+        <section class="project-section">
+            <h2 class="section-title">System Overview</h2>
+            <div class="project-description">
+                <p>A collaborative project in which participants receive data from the Arduino UNO board, store it in a database, and update it in real-time. The system monitors environmental factors like temperature, humidity, and air quality, providing visualization through a web dashboard.</p>
+            </div>
+            
+            <div class="system-diagram">
+                <img src="IMG/Screenshot 2025-04-10 000808.png" alt="System Architecture" style="width:100%">
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2 class="section-title">Key Components</h2>
+            
+            <div class="component-card">
+                <h3>Arduino UNO</h3>
+                <p>The microcontroller board that collects data from various sensors and transmits it to the server.</p>
+                <div class="tech-stack">
+                    <span class="tech-item">Temperature Sensor</span>
+                    <span class="tech-item">Humidity Sensor</span>
+                    <span class="tech-item">Air Quality Sensor</span>
+                </div>
+            </div>
+            
+            <div class="component-card">
+                <h3>Node.js Server</h3>
+                <p>Receives data from Arduino, processes it, and stores it in the database. Also handles API requests from the frontend.</p>
+                <div class="tech-stack">
+                    <span class="tech-item">Express.js</span>
+                    <span class="tech-item">WebSocket</span>
+                    <span class="tech-item">REST API</span>
+                </div>
+            </div>
+            
+            <div class="component-card">
+                <h3>My SQL Database</h3>
+                <p>Stores historical sensor data for analysis and visualization.</p>
+                <div class="tech-stack">
+                    <span class="tech-item">Time-series Data</span>
+                    <span class="tech-item">Aggregation</span>
+                </div>
+            </div>
+            
+            <div class="component-card">
+                <h3>React Dashboard</h3>
+                <p>Web interface that displays real-time data and historical trends with interactive charts.</p>
+                <div class="tech-stack">
+                    <span class="tech-item">Chart.js</span>
+                    <span class="tech-item">Material UI</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2 class="section-title">Data Flow</h2>
+            <div class="data-flow">
+                <div class="flow-step">Sensor Data Collection</div>
+                <div class="flow-step">Arduino Processing</div>
+                <div class="flow-step">Wireless Transmission</div>
+                <div class="flow-step">Server Processing</div>
+                <div class="flow-step">Database Storage</div>
+                <div class="flow-step">Dashboard Visualization</div>
+            </div>
+        </section>
+
+        <a href="projects.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            Back to Projects
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 TingHui's Portfolio. All rights reserved.</p>
+    </footer>
+</body>
+</html>
